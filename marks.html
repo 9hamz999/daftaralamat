@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ar" style="direction: rtl;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سحب دفتر العلامات الإلكتروني</title>
+	
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+	
+	
+	  <style>
+	  
+        @page {
+            size: A4;
+			
+		}
+		
+		body {
+			background:#E1EFFF;
+		}
+		#asasi {
+		font-family: "Tajawal", sans-serif;
+		color: white;
+		width: fit-content;
+		border: none;
+		border-radius: 25px;
+		padding-top: 25px;
+		margin: 15px;
+		background: #596275;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            
+			font-size: 15px;	
+        }
+        th, td {
+		border: 1px solid black;
+        }
+		th {
+		background: #D9D9D9;
+		}
+		
+		
+		
+        /* تنسيق النافذة المنبثقة المخصصة */
+        .modal {
+            display: none; /* مخفية بشكل افتراضي */
+            position: fixed; /* مثبتة في الشاشة */
+            z-index: 1; /* تظهر فوق العناصر الأخرى */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* لتمكين التمرير إذا كان المحتوى كبيرًا */
+            background-color: rgba(0,0,0,0.4); /* خلفية شفافة سوداء */
+        }
+
+        /* تنسيق محتوى النافذة المنبثقة */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% من الأعلى، وتوسط أفقياً */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* عرض النافذة */
+            max-width: 500px; /* الحد الأقصى للعرض */
+            border-radius: 10px; /* حواف مستديرة */
+        }
+        .modal1 {
+            display: none; /* مخفية بشكل افتراضي */
+            position: fixed; /* مثبتة في الشاشة */
+            z-index: 1; /* تظهر فوق العناصر الأخرى */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* لتمكين التمرير إذا كان المحتوى كبيرًا */
+            background-color: rgba(0,0,0,0.4); /* خلفية شفافة سوداء */
+        }
+
+        /* تنسيق محتوى النافذة المنبثقة */
+        .modal-content1 {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% من الأعلى، وتوسط أفقياً */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* عرض النافذة */
+            max-width: 500px; /* الحد الأقصى للعرض */
+            border-radius: 10px; /* حواف مستديرة */
+        }
+
+        /* زر الإغلاق */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+		
+		.close1 {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close1:hover,
+        .close1:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+		
+		        .styled-button {
+            background-color: #329f2299;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: background-color 0.5s; /* انتقال لوني */
+			text-align-last: center;font-size: large;font-family: 'Tajawal';
+			width: 50%;
+        }
+
+        .styled-button:hover {
+            background-color:#27272799; /* لون الخلفية عند التمرير */
+        }
+		
+		@media print {
+		@page {
+			size: A4;
+			
+			
+
+		}
+
+		#asasi {
+			display: none;
+		}
+		#asasi1 {
+			display: none;
+		}
+		body {
+			font-size:18px;
+			background:white;
+		}	
+		}
+		
+    </style>
+</head>
+<body style="text-align: -webkit-center;">
+<div  id="asasi1" style="height: 100vh;align-content: center;">
+<div id="asasi">
+<header style="font-size: xx-large;background: #303952;border: 1px;width: fit-content;padding: 10px;">سحب دفتر العلامات الإلكتروني</header>
+
+
+<div style="width: 75%;padding: 15px;margin: inherit;border: solid 1px;border-radius: 10px;">
+	<div style="width: fit-content;float: right; text-align: end; font-size: large;font-family: 'Tajawal';">اسم المادة:</div>
+
+	<input id="sub_name" style=" float:left; font-size: large;font-family: 'Tajawal';"></input>
+
+	<br></br>
+	<div style="width: fit-content;float: right; text-align: end; font-size: large;font-family: 'Tajawal';">الصف والشعبة:</div>
+
+	<input id="class_name" style=" float:left; font-size: large;font-family: 'Tajawal';"></input>
+
+	<br></br>
+	<input  type="file" id="fileInput" accept=".xls, .xlsx" style="text-align-last: center;font-size: large;font-family: 'Tajawal';"></input>
+</div>	
+
+
+
+<button id="openModalBtn" style="text-align-last: center;font-size: large;font-family: 'Tajawal';" class="styled-button">التعليمات</button>
+
+<button  id="moaina" class="styled-button">معاينة</button>
+<button  id="printButton"  class="styled-button">طباعة الورقة</button>
+
+<div>
+<a href='https://web.facebook.com/Hamza.Abu.Sakoot/' style='text-decoration-line: none;color:white;'><p style="width: 80%;padding-bottom: 2%;">تصميم المعلم: حمزة أبو سكوت</p></a>
+</div>
+
+<p id="message" style="color: red; display: none; background: white;">لم تقم برفع الملف، يرجى اختيار الملف</p>
+</div>
+
+</div>
+
+
+<div style="width: fit-content;">
+<div  id="content"  style="width: fit-content;background: white; display: none;">
+
+<div id="almada" style="width: 65%;float: right;"></div>
+<div id="alsaf" style="float: right;"></div>
+
+	<table style="border: 1px solid black;">
+  <thead>
+
+    <tr>
+	<th id="alraqam" rowspan="3" style="border-bottom:hidden;writing-mode: vertical-lr;transform: rotate(180deg);">الرقم</th>
+	<th id="alisim" rowspan="3" style="border-bottom: hidden;">الاسم</th>
+	<th colspan="5">الفصل الدراسي الأول</th>
+	<th colspan="5">الفصل الدراسي الثاني</th>
+	<th rowspan="3" style="border-bottom: hidden;">المعدل</th>
+	</tr>
+	
+    <tr>
+		<th style="writing-mode: vertical-lr;transform: rotate(180deg);">الاختبار الأول</th>
+		<th style="writing-mode: vertical-lr;transform: rotate(180deg);">الاختبار الثاني</th>
+		<th style="writing-mode: vertical-lr;transform: rotate(180deg);">الاختبار الثالث</th>
+		<th style="writing-mode: vertical-lr;transform: rotate(180deg);">النهائي</th>
+		<th style="writing-mode: vertical-lr;transform: rotate(180deg);">المجموع</th>
+
+
+		<th style="writing-mode: vertical-lr;transform: rotate(180deg);">الاختبار الأول</th>
+		<th style="writing-mode: vertical-lr;transform: rotate(180deg);">الاخبتار الثاني</th>
+		<th style="writing-mode: vertical-lr;transform: rotate(180deg);">الاختبار الثالث</th>
+		<th style="writing-mode: vertical-lr;transform: rotate(180deg);">النهائي</th>
+		<th style="writing-mode: vertical-lr;transform: rotate(180deg);">المجموع</th>
+		
+
+    </tr>
+	
+    <tr>
+		<th style="border-bottom: hidden;">20%</th>
+		<th style="border-bottom: hidden;">20%</th>
+		<th style="border-bottom: hidden;">20%</th>
+		<th style="border-bottom: hidden;">40%</th>
+		<th style="border-bottom: hidden;">100%</th>
+
+
+		<th style="border-bottom: hidden;">20%</th>
+		<th style="border-bottom: hidden;">20%</th>
+		<th style="border-bottom: hidden;">20%</th>
+		<th style="border-bottom: hidden;">40%</th>
+		<th style="border-bottom: hidden;">100%</th>
+	</tr>
+
+	
+  </thead>
+  <tbody>
+    <!-- بداية الصفوف -->
+    <!-- يمكنك تكرار هذا القالب لإنشاء 55 صفًا -->
+    <tr>
+      <td id="c1"></td>
+      <td id="c2"></td>
+      <td id="c3" ></td>
+      <td id="c4"></td>
+      <td id="c5"></td>
+      <td id="c6"></td>
+      <td id="c7"></td>
+      <td id="c8"></td>
+      <td id="c9"></td>
+      <td id="c10"></td>
+      <td id="c11"></td>
+      <td id="c12"></td>
+      <td id="c13"></td>
+    </tr>
+    <!-- نهاية الصفوف -->
+  </tbody>
+</table>
+ </div>	
+ </div>
+ 
+<!-- النافذة المنبثقة المخصصة -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p style="font-weight: bold; font-family: 'Tajawal';">مرحبًا! هذه نافذة التعليمات</p>
+		<p style="text-align: justify; font-family: 'Tajawal';">في حال واجهتك مشكلة، اتّبع الخطوات الآتية:</p>
+		<ul style="text-align: justify; font-family: 'Tajawal';">
+<li>افتح منظومة EMIS الخاصّة بمدارس وكالة الغوث (UNRWA).</li>
+<li>اختر الصف والشعبة والمادة الدراسية.</li>
+<li>اختر أيّ خيار من خانة (نوع التقييم).</li>
+<li>اختر الخيار (كشف درجات المادة المحددة لجميع التقييمات)، من خانة (نوع التقرير).</li>
+<li>قم بتصدير الملف بصيغة (Excle).</li>
+<li>ارفع الملف إلى الموقع عبر زر (اختيار الملف).</li>
+
+</ul>
+    </div>
+
+
+<!-- النافذة المنبثقة المخصصة -->
+
+
+    <div id="excelData"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.7-a/xls.js"></script>
+<script>
+    // الحصول على العناصر
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("openModalBtn");
+    var span = document.getElementsByClassName("close")[0];
+
+    // عند النقر على الزر، تظهر النافذة المنبثقة
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // عند النقر على زر الإغلاق، تختفي النافذة المنبثقة
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // عند النقر في أي مكان خارج النافذة، تختفي النافذة المنبثقة
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+
+
+<script>
+
+document.getElementById('printButton').addEventListener('click', function() {
+var fileInput = document.getElementById('fileInput');
+var content = document.getElementById("content");
+var asasi1 = document.getElementById("asasi1");
+
+var sub_name=document.getElementById("sub_name").value;
+var class_name=document.getElementById("class_name").value;
+var almada=document.getElementById("almada").value;
+var alsaf=document.getElementById("alsaf").value;
+
+
+
+
+var almada= "المادة:    " + sub_name;
+var alsaf= "الصف والشعبة:    " + class_name
+
+
+
+document.getElementById("almada").innerHTML= almada;
+document.getElementById("alsaf").innerHTML= alsaf;
+
+
+    if (fileInput.files.length === 0) {
+        event.preventDefault(); // منع إرسال النموذج
+        message.style.display = 'block'; // عرض الرسالة
+    } else {
+        message.style.display = 'none'; // إخفاء الرسالة إذا كان هناك ملف
+		content.style.display = "contents";
+
+		window.print();
+		content.style.display = "none";
+		asasi1.style.height = "100vh";
+    }
+
+
+
+
+});
+
+</script>
+
+<script>
+
+document.getElementById('moaina').addEventListener('click', function() {
+var fileInput = document.getElementById('fileInput');
+var content = document.getElementById("content");
+var asasi1 = document.getElementById("asasi1");
+
+
+
+    if (fileInput.files.length === 0) {
+        event.preventDefault(); // منع إرسال النموذج
+        message.style.display = 'block'; // عرض الرسالة
+    } else {
+        message.style.display = 'none'; // إخفاء الرسالة إذا كان هناك ملف
+		content.style.display = "contents";
+
+		content.style.display = "fit-content";
+		asasi1.style.height = "auto";
+    }
+
+
+
+
+});
+
+</script>
+    <script>
+        var fileInput = document.getElementById('fileInput');
+        var c1 = document.getElementById('c1');
+
+        fileInput.addEventListener('change', function(e) {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(event) {
+                var data = new Uint8Array(event.target.result);
+                var workbook;
+
+                if (file.name.endsWith('.xls')) {
+                    workbook = XLS.read(data, { type: 'array' });
+                } else {
+                    workbook = XLSX.read(data, { type: 'array' });
+                }
+
+                var sheetName = workbook.SheetNames[0];
+                var sheet = workbook.Sheets[sheetName];
+
+                var range = {
+                    s: { r: 15, c: 23 },
+                    e: { r: 60, c: 23 }
+                };
+
+                var excelData;
+                if (file.name.endsWith('.xls')) {
+                    excelData = XLS.utils.sheet_to_json(sheet, { range });
+                } else {
+                    excelData = XLSX.utils.sheet_to_json(sheet, { range });
+                }
+
+                let htmlTable = '<table>';
+                for (let i = 0; i < excelData.length; i++) {
+                    htmlTable += '<tr>';
+                    for (var key in excelData[i]) {
+                        htmlTable += '<td style="border-right: hidden;border-left: hidden;text-align: center;background: #D9D9D9;">' + excelData[i][key] + '</td>';
+                    }
+                    htmlTable += '</tr>';
+                }
+                htmlTable += '</table>';
+                c1.innerHTML = htmlTable;
+            };
+
+            reader.readAsArrayBuffer(file);
+        });
+    </script>
+	   <script>
+        // تحميل الملف Excel الأسماء
+        var fileInput = document.getElementById('fileInput');
+        var excelDataDiv = document.getElementById('excelData');
+		var c2 = document.getElementById('c2')
+        fileInput.addEventListener('change', (e) => {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = (event) => {
+                var data = new Uint8Array(event.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+
+                // تحديد النطاق المطلوب (على سبيل المثال، الصفوف من 1 إلى 10 والأعمدة من A إلى C)
+                var range = {
+                    s: { r: 15, c: 20 }, // الصف الأول، العمود الأول
+                    e: { r: 60, c: 20 }  // الصف العاشر، العمود الثالث
+                };
+                // قراءة البيانات بالنطاق المحدد
+                var sheetName = workbook.SheetNames[0];
+                var sheet = workbook.Sheets[sheetName];
+                var excelData = XLSX.utils.sheet_to_json(sheet, { range });
+
+                // تحويل البيانات إلى جدول HTML
+                let htmlTable = '<table>';
+                for (let i = 0; i < excelData.length; i++) {
+                    htmlTable += '<tr>';
+                    for (var key in excelData[i]) {
+                        htmlTable += '<td style="border-right: hidden;border-left: hidden;">' + excelData[i][key] + '</td>';
+                    }
+                    htmlTable += '</tr>';
+                }
+                htmlTable += '</table>';
+				c2.innerHTML = htmlTable;
+				};
+            reader.readAsArrayBuffer(file);
+        });
+    </script>
+	   <script>
+        // تحميل الملف Excel علامات الشهر الأول
+        var fileInput = document.getElementById('fileInput');
+        var excelDataDiv = document.getElementById('excelData');
+		var c3 = document.getElementById('c3')
+        fileInput.addEventListener('change', (e) => {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = (event) => {
+                var data = new Uint8Array(event.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+
+                // تحديد النطاق المطلوب (على سبيل المثال، الصفوف من 1 إلى 10 والأعمدة من A إلى C)
+                var range = {
+                    s: { r: 15, c: 19 }, // الصف الأول، العمود الأول
+                    e: { r: 60, c: 19 }  // الصف العاشر، العمود الثالث
+                };
+                // قراءة البيانات بالنطاق المحدد
+                var sheetName = workbook.SheetNames[0];
+                var sheet = workbook.Sheets[sheetName];
+                var excelData = XLSX.utils.sheet_to_json(sheet, { range });
+
+                // تحويل البيانات إلى جدول HTML
+                let htmlTable = '<table>';
+                for (let i = 0; i < excelData.length; i++) {
+                    htmlTable += '<tr>';
+                    for (var key in excelData[i]) {
+                        htmlTable += '<td style="border-right: hidden;border-left: hidden;text-align: center;">' + excelData[i][key] + '</td>';
+                    }
+                    htmlTable += '</tr>';
+                }
+                htmlTable += '</table>';
+				c3.innerHTML = htmlTable;
+				};
+            reader.readAsArrayBuffer(file);
+        });
+    </script>
+	   <script>
+        // تحميل الملف Excel علامات الشهر الثاني
+        var fileInput = document.getElementById('fileInput');
+        var excelDataDiv = document.getElementById('excelData');
+		var c4 = document.getElementById('c4')
+        fileInput.addEventListener('change', (e) => {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = (event) => {
+                var data = new Uint8Array(event.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+
+                // تحديد النطاق المطلوب (على سبيل المثال، الصفوف من 1 إلى 10 والأعمدة من A إلى C)
+                var range = {
+                    s: { r: 15, c: 18 }, // الصف الأول، العمود الأول
+                    e: { r: 60, c: 18 }  // الصف العاشر، العمود الثالث
+                };
+                // قراءة البيانات بالنطاق المحدد
+                var sheetName = workbook.SheetNames[0];
+                var sheet = workbook.Sheets[sheetName];
+                var excelData = XLSX.utils.sheet_to_json(sheet, { range });
+
+                // تحويل البيانات إلى جدول HTML
+                let htmlTable = '<table>';
+                for (let i = 0; i < excelData.length; i++) {
+                    htmlTable += '<tr>';
+                    for (var key in excelData[i]) {
+                        htmlTable += '<td style="border-right: hidden;border-left: hidden;text-align: center;">' + excelData[i][key] + '</td>';
+                    }
+                    htmlTable += '</tr>';
+                }
+                htmlTable += '</table>';
+				c4.innerHTML = htmlTable;
+				};
+            reader.readAsArrayBuffer(file);
+        });
+    </script>
+	   <script>
+        // تحميل الملف Excel علامات الشهر الثالث
+        var fileInput = document.getElementById('fileInput');
+        var excelDataDiv = document.getElementById('excelData');
+		var c5 = document.getElementById('c5')
+        fileInput.addEventListener('change', (e) => {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = (event) => {
+                var data = new Uint8Array(event.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+
+                // تحديد النطاق المطلوب (على سبيل المثال، الصفوف من 1 إلى 10 والأعمدة من A إلى C)
+                var range = {
+                    s: { r: 15, c: 15 }, // الصف الأول، العمود الأول
+                    e: { r: 60, c: 15 }  // الصف العاشر، العمود الثالث
+                };
+                // قراءة البيانات بالنطاق المحدد
+                var sheetName = workbook.SheetNames[0];
+                var sheet = workbook.Sheets[sheetName];
+                var excelData = XLSX.utils.sheet_to_json(sheet, { range });
+
+                // تحويل البيانات إلى جدول HTML
+                let htmlTable = '<table>';
+                for (let i = 0; i < excelData.length; i++) {
+                    htmlTable += '<tr>';
+                    for (var key in excelData[i]) {
+                        htmlTable += '<td style="border-right: hidden;border-left: hidden;text-align: center;">' + excelData[i][key] + '</td>';
+                    }
+                    htmlTable += '</tr>';
+                }
+                htmlTable += '</table>';
+				c5.innerHTML = htmlTable;
+				};
+            reader.readAsArrayBuffer(file);
+        });
+    </script>
+	   <script>
+        // تحميل الملف Excel علامات النهائي
+        var fileInput = document.getElementById('fileInput');
+        var excelDataDiv = document.getElementById('excelData');
+		var c6 = document.getElementById('c6')
+        fileInput.addEventListener('change', (e) => {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = (event) => {
+                var data = new Uint8Array(event.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+
+                // تحديد النطاق المطلوب (على سبيل المثال، الصفوف من 1 إلى 10 والأعمدة من A إلى C)
+                var range = {
+                    s: { r: 15, c: 13 }, // الصف الأول، العمود الأول
+                    e: { r: 60, c: 13 }  // الصف العاشر، العمود الثالث
+                };
+                // قراءة البيانات بالنطاق المحدد
+                var sheetName = workbook.SheetNames[0];
+                var sheet = workbook.Sheets[sheetName];
+                var excelData = XLSX.utils.sheet_to_json(sheet, { range });
+
+                // تحويل البيانات إلى جدول HTML
+                let htmlTable = '<table>';
+                for (let i = 0; i < excelData.length; i++) {
+                    htmlTable += '<tr>';
+                    for (var key in excelData[i]) {
+                        htmlTable += '<td style="border-right: hidden;border-left: hidden;text-align: center;">' + excelData[i][key] + '</td>';
+                    }
+                    htmlTable += '</tr>';
+                }
+                htmlTable += '</table>';
+				c6.innerHTML = htmlTable;
+				};
+            reader.readAsArrayBuffer(file);
+        });
+    </script>
+	   <script>
+        // تحميل الملف Excel المجموع
+        var fileInput = document.getElementById('fileInput');
+        var excelDataDiv = document.getElementById('excelData');
+		var c7 = document.getElementById('c7')
+        fileInput.addEventListener('change', (e) => {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = (event) => {
+                var data = new Uint8Array(event.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+
+                // تحديد النطاق المطلوب (على سبيل المثال، الصفوف من 1 إلى 10 والأعمدة من A إلى C)
+                var range = {
+                    s: { r: 15, c: 5 }, // الصف الأول، العمود الأول
+                    e: { r: 60, c: 5 }  // الصف العاشر، العمود الثالث
+                };
+                // قراءة البيانات بالنطاق المحدد
+                var sheetName = workbook.SheetNames[0];
+                var sheet = workbook.Sheets[sheetName];
+                var excelData = XLSX.utils.sheet_to_json(sheet, { range });
+
+                // تحويل البيانات إلى جدول HTML
+                let htmlTable = '<table>';
+                for (let i = 0; i < excelData.length; i++) {
+                    htmlTable += '<tr>';
+                    for (var key in excelData[i]) {
+                        htmlTable += '<td style="border-right: hidden;border-left: hidden; background: #D9D9D9;text-align: center;">' + excelData[i][key] + '</td>';
+                    }
+                    htmlTable += '</tr>';
+                }
+                htmlTable += '</table>';
+				c7.innerHTML = htmlTable;
+				};
+            reader.readAsArrayBuffer(file);
+        });
+    </script>
+	   <script>
+        // تحميل الملف Excel المجموع
+        var fileInput = document.getElementById('fileInput');
+        var excelDataDiv = document.getElementById('excelData');
+		var c8 = document.getElementById('c8')
+        fileInput.addEventListener('change', (e) => {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = (event) => {
+                var data = new Uint8Array(event.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+
+                // تحديد النطاق المطلوب (على سبيل المثال، الصفوف من 1 إلى 10 والأعمدة من A إلى C)
+                var range = {
+                    s: { r: 15, c: 11 }, // الصف الأول، العمود الأول
+                    e: { r: 60, c: 11 }  // الصف العاشر، العمود الثالث
+                };
+                // قراءة البيانات بالنطاق المحدد
+                var sheetName = workbook.SheetNames[0];
+                var sheet = workbook.Sheets[sheetName];
+                var excelData = XLSX.utils.sheet_to_json(sheet, { range });
+
+                // تحويل البيانات إلى جدول HTML
+                let htmlTable = '<table>';
+                for (let i = 0; i < excelData.length; i++) {
+                    htmlTable += '<tr>';
+                    for (var key in excelData[i]) {
+                        htmlTable += '<td style="border-right: hidden;border-left: hidden; text-align: center;">' + excelData[i][key] + '</td>';
+                    }
+                    htmlTable += '</tr>';
+                }
+                htmlTable += '</table>';
+				c8.innerHTML = htmlTable;
+				};
+            reader.readAsArrayBuffer(file);
+        });
+    </script>
+	   <script>
+        // تحميل الملف Excel المجموع
+        var fileInput = document.getElementById('fileInput');
+        var excelDataDiv = document.getElementById('excelData');
+		var c9 = document.getElementById('c9')
+        fileInput.addEventListener('change', (e) => {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = (event) => {
+                var data = new Uint8Array(event.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+
+                // تحديد النطاق المطلوب (على سبيل المثال، الصفوف من 1 إلى 10 والأعمدة من A إلى C)
+                var range = {
+                    s: { r: 15, c: 10 }, // الصف الأول، العمود الأول
+                    e: { r: 60, c: 10 }  // الصف العاشر، العمود الثالث
+                };
+                // قراءة البيانات بالنطاق المحدد
+                var sheetName = workbook.SheetNames[0];
+                var sheet = workbook.Sheets[sheetName];
+                var excelData = XLSX.utils.sheet_to_json(sheet, { range });
+
+                // تحويل البيانات إلى جدول HTML
+                let htmlTable = '<table>';
+                for (let i = 0; i < excelData.length; i++) {
+                    htmlTable += '<tr>';
+                    for (var key in excelData[i]) {
+                        htmlTable += '<td style="border-right: hidden;border-left: hidden; text-align: center;">' + excelData[i][key] + '</td>';
+                    }
+                    htmlTable += '</tr>';
+                }
+                htmlTable += '</table>';
+				c9.innerHTML = htmlTable;
+				};
+            reader.readAsArrayBuffer(file);
+        });
+    </script>
+	   <script>
+        // تحميل الملف Excel المجموع
+        var fileInput = document.getElementById('fileInput');
+        var excelDataDiv = document.getElementById('excelData');
+		var c10 = document.getElementById('c10')
+        fileInput.addEventListener('change', (e) => {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = (event) => {
+                var data = new Uint8Array(event.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+
+                // تحديد النطاق المطلوب (على سبيل المثال، الصفوف من 1 إلى 10 والأعمدة من A إلى C)
+                var range = {
+                    s: { r: 15, c: 7 }, // الصف الأول، العمود الأول
+                    e: { r: 60, c: 7 }  // الصف العاشر، العمود الثالث
+                };
+                // قراءة البيانات بالنطاق المحدد
+                var sheetName = workbook.SheetNames[0];
+                var sheet = workbook.Sheets[sheetName];
+                var excelData = XLSX.utils.sheet_to_json(sheet, { range });
+
+                // تحويل البيانات إلى جدول HTML
+                let htmlTable = '<table>';
+                for (let i = 0; i < excelData.length; i++) {
+                    htmlTable += '<tr>';
+                    for (var key in excelData[i]) {
+                        htmlTable += '<td style="border-right: hidden;border-left: hidden; text-align: center;">' + excelData[i][key] + '</td>';
+                    }
+                    htmlTable += '</tr>';
+                }
+                htmlTable += '</table>';
+				c10.innerHTML = htmlTable;
+				};
+            reader.readAsArrayBuffer(file);
+        });
+    </script>
+	   <script>
+        // تحميل الملف Excel المجموع
+        var fileInput = document.getElementById('fileInput');
+        var excelDataDiv = document.getElementById('excelData');
+		var c11 = document.getElementById('c11')
+        fileInput.addEventListener('change', (e) => {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = (event) => {
+                var data = new Uint8Array(event.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+
+                // تحديد النطاق المطلوب (على سبيل المثال، الصفوف من 1 إلى 10 والأعمدة من A إلى C)
+                var range = {
+                    s: { r: 15, c: 6 }, // الصف الأول، العمود الأول
+                    e: { r: 60, c: 6 }  // الصف العاشر، العمود الثالث
+                };
+                // قراءة البيانات بالنطاق المحدد
+                var sheetName = workbook.SheetNames[0];
+                var sheet = workbook.Sheets[sheetName];
+                var excelData = XLSX.utils.sheet_to_json(sheet, { range });
+
+                // تحويل البيانات إلى جدول HTML
+                let htmlTable = '<table>';
+                for (let i = 0; i < excelData.length; i++) {
+                    htmlTable += '<tr>';
+                    for (var key in excelData[i]) {
+                        htmlTable += '<td style="border-right: hidden;border-left: hidden; text-align: center;">' + excelData[i][key] + '</td>';
+                    }
+                    htmlTable += '</tr>';
+                }
+                htmlTable += '</table>';
+				c11.innerHTML = htmlTable;
+				};
+            reader.readAsArrayBuffer(file);
+        });
+		</script>
+	   <script>
+        // تحميل الملف Excel المجموع
+        var fileInput = document.getElementById('fileInput');
+        var excelDataDiv = document.getElementById('excelData');
+		var c12 = document.getElementById('c12')
+        fileInput.addEventListener('change', (e) => {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = (event) => {
+                var data = new Uint8Array(event.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+
+                // تحديد النطاق المطلوب (على سبيل المثال، الصفوف من 1 إلى 10 والأعمدة من A إلى C)
+                var range = {
+                    s: { r: 15, c: 3 }, // الصف الأول، العمود الأول
+                    e: { r: 60, c: 3 }  // الصف العاشر، العمود الثالث
+                };
+                // قراءة البيانات بالنطاق المحدد
+                var sheetName = workbook.SheetNames[0];
+                var sheet = workbook.Sheets[sheetName];
+                var excelData = XLSX.utils.sheet_to_json(sheet, { range });
+
+                // تحويل البيانات إلى جدول HTML
+                let htmlTable = '<table>';
+                for (let i = 0; i < excelData.length; i++) {
+                    htmlTable += '<tr>';
+                    for (var key in excelData[i]) {
+                        htmlTable += '<td style="border-right: hidden;border-left: hidden; text-align: center;background: #D9D9D9;">' + excelData[i][key] + '</td>';
+                    }
+                    htmlTable += '</tr>';
+                }
+                htmlTable += '</table>';
+				c12.innerHTML = htmlTable;
+				};
+            reader.readAsArrayBuffer(file);
+        });
+		</script>
+	   <script>
+        // تحميل الملف Excel المجموع
+        var fileInput = document.getElementById('fileInput');
+        var excelDataDiv = document.getElementById('excelData');
+		var c13 = document.getElementById('c13')
+        fileInput.addEventListener('change', (e) => {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = (event) => {
+                var data = new Uint8Array(event.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+
+                // تحديد النطاق المطلوب (على سبيل المثال، الصفوف من 1 إلى 10 والأعمدة من A إلى C)
+                var range = {
+                    s: { r: 15, c: 1 }, // الصف الأول، العمود الأول
+                    e: { r: 60, c: 1 }  // الصف العاشر، العمود الثالث
+                };
+                // قراءة البيانات بالنطاق المحدد
+                var sheetName = workbook.SheetNames[0];
+                var sheet = workbook.Sheets[sheetName];
+                var excelData = XLSX.utils.sheet_to_json(sheet, { range });
+
+                // تحويل البيانات إلى جدول HTML
+                let htmlTable = '<table>';
+                for (let i = 0; i < excelData.length; i++) {
+                    htmlTable += '<tr>';
+                    for (var key in excelData[i]) {
+                        htmlTable += '<td style="border-right: hidden;border-left: hidden; text-align: center;">' + '%'+ excelData[i][key] + '</td>';
+                    }
+                    htmlTable += '</tr>';
+                }
+                htmlTable += '</table>';
+				c13.innerHTML = htmlTable;
+				};
+            reader.readAsArrayBuffer(file);
+        });
+		</script>
+
+		
+</body>
+</html>
